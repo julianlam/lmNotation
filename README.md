@@ -15,11 +15,16 @@ following holds true:
 
 * The intended phrase adheres (at least loosely) to the diatonic scale, or is a
 derivative/relative of the diatonic scale
+* The phrase has a tonal center  (lmNotation is not ideal for atonal or
+twelve-tone music)
 * *[More to be added...]*
 
 It shares slight similarities with [LilyPond notation](http://lilypond.org/),
 although it is less strict in that all notes are relative to a relative tonic
-center.
+center, and a key signature is not a prerequisite.
+
+This also means that lmNotation follows *movable do*, where the pitch of `do`
+shifts based on where the tonic center is located for that particular motif.
 
 For example, where in traditional notation programs, a key of C major would be
 defined, lmNotation only requires that the motif contain a tonic, centered on
@@ -43,7 +48,7 @@ There are several basic features to note:
 signature in this example is 4/4 time.
 3. A pipe ("`|`") separates the time signature with the next section.
 4. This next section contains the actual notes of the motif.
-	* Each note is separated by a comma
+	* Each note is separated by a single space
 	* Each note contains two pieces of information, a solfège representation of
 	the note, and its length, relative to the time signature defined in the
 	previous section.
@@ -78,6 +83,25 @@ Also, the second minor pentatonic scale motif contains two accidentals:
 `mey` and `tey`. Solfège containing the suffix `-ey` are lowered a half-step,
 while solfège with the suffix `-i` are raised a half step (e.g. `si, ti`).
 
+## Contribute
+
+Contributions are always welcome, although in its infancy, the lmNotation spec
+is intentionally sparse, as it will grow in tandem with lmNotation parsers and
+translators.
+
+To request changes to the spec,
+[fork this project](https://help.github.com/articles/fork-a-repo), make changes,
+and create a
+[pull request](https://help.github.com/articles/using-pull-requests). If
+required, the changes will be discussed before it is implemented into the spec
+as a new version.
+
+## Related Projects
+
+* lmNotation-php &ndash; A PHP class library containing:
+	* a parser that reads lmNotation strings (not started)
+	* a translator that outputs LilyPond notation (not started)
+
 ## Version History
 
 * *[Proposed]* v0.1.1 &ndash; Additions to the lmNotation spec
@@ -86,9 +110,11 @@ while solfège with the suffix `-i` are raised a half step (e.g. `si, ti`).
 	* Force upward/downward interval (`do2 'sol2` and `do2 ,fa2` &ndash; like
 	LilyPond)
 	* Triplets (how does LilyPond support triplets?)
+	* Support for alternate spellings of solfège: `doh`, `ra`, `me`, `se`, `so`,
+	`le`, and `te`
 * v0.1 &ndash; Codified the base format of an lmNotation motif
 	* `{}` start/end
-	* CSV for note separation
+	* Spaces for note separation
 	* Example: `{4/4|do2 sol2 mi1}`
 	* Accepted solfège: do, di/rah, re, ri/may, mi, fa, fi/say, sol, si/ley, la,
 	li/tey, and ti
